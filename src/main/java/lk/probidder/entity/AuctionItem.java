@@ -47,7 +47,9 @@ public class AuctionItem {
     @OneToMany(mappedBy = "auctionItem")
     private List<Bid> bids = new ArrayList<>();
 
-
     @OneToMany(mappedBy = "auctionItem")
     private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "auctionItem")
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 }

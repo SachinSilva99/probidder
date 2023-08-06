@@ -1,4 +1,5 @@
 package lk.probidder.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,10 +31,16 @@ public class BuyDirectItem {
     @Column(nullable = false)
     private double price;
 
+    @Column(nullable = false)
+    private long qtyOnHand;
+
     @ManyToOne
     @JoinColumn(name = "seller_id", referencedColumnName = "id")
     private User seller;
 
     @OneToMany
     private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 }

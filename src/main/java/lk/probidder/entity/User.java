@@ -44,6 +44,9 @@ public class User {
     private List<AuctionItem> auctionItems = new ArrayList<>();
 
     @OneToMany
+    private List<BuyDirectItem> buyDirectItems = new ArrayList<>();
+
+    @OneToMany
     private List<Notification> notifications = new ArrayList<>();
 
     @OneToMany
