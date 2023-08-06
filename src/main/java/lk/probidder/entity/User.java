@@ -1,13 +1,14 @@
 package lk.probidder.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.probidder.entity.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /*
 Author : Sachin Silva
@@ -35,4 +36,16 @@ public class User {
 
     @Column(nullable = false)
     private Role role;
+
+    @Column(nullable = false)
+    private Date dob;
+
+    @OneToMany
+    private List<AuctionItem> auctionItems = new ArrayList<>();
+
+    @OneToMany
+    private List<Notification> notifications = new ArrayList<>();
+
+    @OneToMany
+    private List<Review> reviews = new ArrayList<>();
 }

@@ -1,12 +1,10 @@
 package lk.probidder.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /*
@@ -16,38 +14,26 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "auction_item")
-public class AuctionItem {
+@Table(name = "buy_direct_items")
+public class BuyDirectItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
+    private String itemName;
+
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    private double startingBid;
-
-    @Column(nullable = false)
-    private double reservePrice;
-
-    @Column(nullable = false)
-    private Date startTime;
-
-    @Column(nullable = false)
-    private Date endTime;
-
-    @Column(nullable = false)
-    private boolean active;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "seller_id", referencedColumnName = "id")
     private User seller;
 
-    @OneToMany(mappedBy = "auctionItem")
-    private List<Bid> bids = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "auctionItem")
+    @OneToMany
     private List<Review> reviews = new ArrayList<>();
 }
