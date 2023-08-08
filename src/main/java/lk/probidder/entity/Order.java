@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /*
 Author : Sachin Silva
@@ -22,6 +24,10 @@ public class Order {
 
     @ManyToOne
     private User buyer;
+
     @Column(nullable = false, name = "order_date")
     private Date orderDate;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
 }

@@ -51,5 +51,5 @@ public class AuctionItem {
     private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "auctionItem")
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<AuctionItemOrder> auctionItemOrders = new ArrayList<>();
 }

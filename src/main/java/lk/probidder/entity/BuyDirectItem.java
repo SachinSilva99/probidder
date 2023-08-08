@@ -41,6 +41,6 @@ public class BuyDirectItem {
     @OneToMany
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "buyDirectItem")
+    private List<BuyDirectItemOrder> buyDirectItemOrders = new ArrayList<>();
 }
