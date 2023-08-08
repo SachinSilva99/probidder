@@ -1,13 +1,19 @@
 package lk.probidder.api;
 
+import lk.probidder.dto.UserDTO;
+import lk.probidder.dto.request.UserRequestDTO;
+import lk.probidder.dto.response.UserResponseDTO;
 import lk.probidder.entity.User;
 import lk.probidder.service.UserService;
+import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 /*
 Author : Sachin Silva
@@ -16,6 +22,7 @@ Author : Sachin Silva
 @RequestMapping("/api/users")
 public class UserController {
 
+    @Autowired
     private final UserService userService;
 
     @Autowired
@@ -24,13 +31,21 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        if (user != null) {
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
+        UserResponseDTO user = null;
+        try {
+            user = userService.getUserById(id);
             return ResponseEntity.ok(user);
-        } else {
+        } catch (ClassNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
+    @PostMapping(value = "/create",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<String> save(@RequestBody UserRequestDTO userRequestDTO) {
+        String user = userService.createUser(userRequestDTO);
+        return ResponseEntity.ok(user);
+    }
 }

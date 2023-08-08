@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ Author : Sachin Silva
 @Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -38,7 +40,7 @@ public class User {
     private Role role;
 
     @Column(nullable = false)
-    private Date dob;
+    private LocalDate dob;
 
     @OneToMany
     private List<AuctionItem> auctionItems = new ArrayList<>();
@@ -49,6 +51,6 @@ public class User {
     @OneToMany
     private List<Notification> notifications = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "buyer")
     private List<Review> reviews = new ArrayList<>();
 }

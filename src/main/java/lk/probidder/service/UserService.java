@@ -1,5 +1,8 @@
 package lk.probidder.service;
 
+import lk.probidder.dto.UserDTO;
+import lk.probidder.dto.request.UserRequestDTO;
+import lk.probidder.dto.response.UserResponseDTO;
 import lk.probidder.entity.User;
 
 /*
@@ -7,13 +10,13 @@ Author : Sachin Silva
 */
 public interface UserService {
 
-    User getUserById(Long id);
+    UserResponseDTO getUserById(Long id) throws ClassNotFoundException;
 
-    User getUserByUsername(String username);
+    UserResponseDTO getUserByUsername(String username) throws ClassNotFoundException;
 
-    User getUserByEmail(String email);
+    UserResponseDTO getUserByEmail(String email) throws ClassNotFoundException;
 
-    User createUser(User user);
+    String createUser(UserRequestDTO userRequestDTO);
 
     void deleteUser(Long id);
 }

@@ -27,9 +27,15 @@ public class OrderDetail {
     )
     private BuyDirectItem buyDirectItem;
 
+    @Column
+    private long buyDirectItemQty;
+
     @ManyToOne
     @JoinColumn(
             name = "auction_item_id"
     )
     private AuctionItem auctionItem;
+
+    @Column
+    private long auctionItemQty;
 }
