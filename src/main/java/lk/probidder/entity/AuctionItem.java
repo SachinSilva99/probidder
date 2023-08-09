@@ -41,7 +41,7 @@ public class AuctionItem {
     private boolean active;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id", referencedColumnName = "id")
+    @JoinColumn(name = "seller_id", referencedColumnName = "id", nullable = false)
     private User seller;
 
     @OneToMany(mappedBy = "auctionItem")

@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> getUser(@PathVariable Long id) {
         UserResponseDTO user = null;
         try {
             user = userService.getUserById(id);
@@ -41,10 +41,13 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/create",
+    @PostMapping(
+            value = "/create",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<String> save(@RequestBody UserRequestDTO userRequestDTO) {
+        System.out.println(userRequestDTO);
         String user = userService.createUser(userRequestDTO);
         return ResponseEntity.ok(user);
     }

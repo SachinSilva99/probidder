@@ -1,5 +1,6 @@
 package lk.probidder.dto.response;
 
+import lk.probidder.dto.UserDTO;
 import lk.probidder.entity.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
