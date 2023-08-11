@@ -1,5 +1,6 @@
 package lk.probidder.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lk.probidder.dto.UserDTO;
 import lk.probidder.dto.request.UserRequestDTO;
 import lk.probidder.dto.response.UserResponseDTO;
@@ -25,21 +26,21 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserResponseDTO getUserById(Long id) throws ClassNotFoundException {
+    public UserResponseDTO getUserById(Long id) throws EntityNotFoundException {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             return userMapper.toUserResponseDto(byId.get());
         }
-        throw new ClassNotFoundException(id + "customer Not Found ");
+        throw new EntityNotFoundException(id + "customer Not Found ");
     }
 
     @Override
-    public UserResponseDTO getUserByUsername(String username) throws ClassNotFoundException {
+    public UserResponseDTO getUserByUsername(String username) throws EntityNotFoundException {
         Optional<User> byId = userRepository.findByUsername(username);
         if (byId.isPresent()) {
             return userMapper.toUserResponseDto(byId.get());
         }
-        throw new ClassNotFoundException(username + "customer Not Found ");
+        throw new EntityNotFoundException(username + "customer Not Found ");
     }
 
     @Override
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
                 urd.getDob()
         );*/
         UserDTO userDTO = userMapper.userRequestDtoToUserDto(urd);
-        return userRepository.save(userMapper.toUser(userDTO)).getId()+ " saved";
+        return userRepository.save(userMapper.toUser(userDTO)).getId() + " saved";
     }
 
     @Override

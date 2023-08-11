@@ -15,7 +15,7 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "buy_direct_items")
+@Table(name = "item")
 public class Item {
 
     @Id

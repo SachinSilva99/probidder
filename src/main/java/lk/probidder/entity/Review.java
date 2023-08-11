@@ -21,12 +21,9 @@ public class Review {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "auction_item_id", referencedColumnName = "id")
-    private AuctionItem auctionItem;
 
     @ManyToOne
-    @JoinColumn(name = "buy_direct_item_id", referencedColumnName = "id")
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item item;
 
     @ManyToOne

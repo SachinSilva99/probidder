@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class StandardResponse {
     private int code; // http response code
-    private String message;
+    private String responseMessage;
     private Object data;
 }

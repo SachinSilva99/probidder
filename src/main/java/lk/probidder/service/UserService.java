@@ -1,5 +1,6 @@
 package lk.probidder.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lk.probidder.dto.UserDTO;
 import lk.probidder.dto.request.UserRequestDTO;
 import lk.probidder.dto.response.UserResponseDTO;
@@ -10,9 +11,9 @@ Author : Sachin Silva
 */
 public interface UserService {
 
-    UserResponseDTO getUserById(Long id) throws ClassNotFoundException;
+    UserResponseDTO getUserById(Long id) throws EntityNotFoundException;
 
-    UserResponseDTO getUserByUsername(String username) throws ClassNotFoundException;
+    UserResponseDTO getUserByUsername(String username) throws EntityNotFoundException;
 
     UserResponseDTO getUserByEmail(String email) throws ClassNotFoundException;
 
