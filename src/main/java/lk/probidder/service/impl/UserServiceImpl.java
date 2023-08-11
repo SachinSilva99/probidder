@@ -26,12 +26,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserResponseDTO getUserById(Long id) throws EntityNotFoundException {
+    public UserResponseDTO getUserById(Long id) throws ClassNotFoundException {
         Optional<User> byId = userRepository.findById(id);
         if (byId.isPresent()) {
             return userMapper.toUserResponseDto(byId.get());
         }
-        throw new EntityNotFoundException(id + "customer Not Found ");
+        throw new ClassNotFoundException(id + "customer Not Found ");
     }
 
     @Override

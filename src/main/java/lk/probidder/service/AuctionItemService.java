@@ -1,5 +1,6 @@
 package lk.probidder.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lk.probidder.dto.request.AuctionItemRequestDTO;
 import lk.probidder.dto.response.AuctionItemResponseDTO;
 
@@ -15,6 +16,6 @@ public interface AuctionItemService {
     List<AuctionItemResponseDTO>getItemDtoList();
     List<AuctionItemResponseDTO>searchItemDtoByDesOrId(String description, Long id);
     String createAuctionItem(AuctionItemRequestDTO auctionItemRequestDTO);
-    void deleteAuctionItem(Long id);
+    void deleteAuctionItem(Long id)throws ClassNotFoundException;
 
 }

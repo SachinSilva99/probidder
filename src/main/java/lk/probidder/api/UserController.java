@@ -37,9 +37,17 @@ public class UserController {
                             userService.getUserById(id)
                     ), HttpStatus.CREATED
             );
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
+        } catch (ClassNotFoundException e) {
+            //  e.printStackTrace();
         }
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        404,
+                        id+" not found",
+                        null
+                ), HttpStatus.NOT_FOUND
+        );
+
     }
 
     @PostMapping(

@@ -1,5 +1,6 @@
 package lk.probidder.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lk.probidder.dto.AuctionItemDTO;
 import lk.probidder.dto.request.AuctionItemRequestDTO;
@@ -72,6 +73,9 @@ public class AuctionItemServiceImpl implements AuctionItemService {
     @Override
     public void deleteAuctionItem(Long id) {
         Optional<AuctionItem> byId = auctionItemRepo.findById(id);
+        if(byId.isEmpty()){
+            throw new EntityNotFoundException(id + " is not available");
+        }
         byId.ifPresent(auctionItem -> auctionItemRepo.delete(auctionItem));
     }
 

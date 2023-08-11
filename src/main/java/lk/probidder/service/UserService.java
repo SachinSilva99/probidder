@@ -11,7 +11,7 @@ Author : Sachin Silva
 */
 public interface UserService {
 
-    UserResponseDTO getUserById(Long id) throws EntityNotFoundException;
+    UserResponseDTO getUserById(Long id) throws ClassNotFoundException;
 
     UserResponseDTO getUserByUsername(String username) throws EntityNotFoundException;
 
