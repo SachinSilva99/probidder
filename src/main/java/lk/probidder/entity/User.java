@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /*
@@ -47,7 +46,7 @@ public class User {
     private List<AuctionItem> auctionItems = new ArrayList<>();
 
     @OneToMany
-    private List<BuyDirectItem> buyDirectItems = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     @OneToMany
     private List<Notification> notifications = new ArrayList<>();

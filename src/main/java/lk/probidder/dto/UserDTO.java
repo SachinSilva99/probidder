@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 Author : Sachin Silva
@@ -23,13 +24,9 @@ public class UserDTO {
     private String phoneNumber;
     private Role role;
     private LocalDate dob;
+    private List<AuctionItemDTO> auctionItems = new ArrayList<>();
+   /* private List<BuyDirectItemDTO> buyDirectItems = new ArrayList<>();
+    private List<NotificationDTO> notifications = new ArrayList<>();
+    private List<ReviewDTO> reviews = new ArrayList<>();*/
 
-    public UserDTO(String username, String email, String password, String phoneNumber, Role role, LocalDate  dob) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.role = role;
-        this.dob = dob;
-    }
 }

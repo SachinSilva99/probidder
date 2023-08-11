@@ -16,7 +16,7 @@ Author : Sachin Silva
 @Data
 @Entity
 @Table(name = "buy_direct_items")
-public class BuyDirectItem {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,6 @@ public class BuyDirectItem {
     @OneToMany
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "buyDirectItem")
-    private List<BuyDirectItemOrder> buyDirectItemOrders = new ArrayList<>();
+    @OneToMany(mappedBy = "item")
+    private List<ItemOrder> itemOrders = new ArrayList<>();
 }

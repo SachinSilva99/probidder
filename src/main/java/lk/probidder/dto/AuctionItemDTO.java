@@ -1,9 +1,5 @@
 package lk.probidder.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +28,13 @@ public class AuctionItemDTO {
     private boolean active;
 
     private UserDTO seller;
+
+
+//    private List<BidDTO> bids = new ArrayList<>();
+
+//    private List<ReviewDTO> reviews = new ArrayList<>();
+
+//    private List<AuctionItemOrderDTO> auctionItemOrders = new ArrayList<>();
 
     public AuctionItemDTO(String description, double startingBid, double reservePrice, Date startTime, Date endTime, boolean active, UserDTO sellerId) {
         this.description = description;

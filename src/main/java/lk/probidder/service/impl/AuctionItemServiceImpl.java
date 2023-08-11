@@ -54,8 +54,8 @@ public class AuctionItemServiceImpl implements AuctionItemService {
 
     @Override
     @Transactional
-    public String createAuctionItem(AuctionItemRequestDTO dto) {
-        AuctionItemDTO auctionItemDTO = new AuctionItemDTO(
+    public String createAuctionItem(AuctionItemRequestDTO auctionItemRequestDTO) {
+      /*  AuctionItemDTO auctionItemDTO = new AuctionItemDTO(
                 dto.getDescription(),
                 dto.getStartingBid(),
                 dto.getReservePrice(),
@@ -63,12 +63,10 @@ public class AuctionItemServiceImpl implements AuctionItemService {
                 dto.getEndTime(),
                 dto.isActive(),
                 dto.getSeller()
-        );
-        System.out.println(dto);
-        AuctionItem auctionItem = auctionItemMapper.toAuctionItem(auctionItemDTO);
-        System.out.println(auctionItem);
-
-        return auctionItemRepo.save(auctionItem).getId() + " saved";
+        );*/
+        AuctionItemDTO auctionItemDTO = auctionItemMapper.auctionRequestDTOtoAuctionItemDto(auctionItemRequestDTO);
+        return auctionItemRepo
+                .save(auctionItemMapper.toAuctionItem(auctionItemDTO)).getId() + " saved";
     }
 
     @Override

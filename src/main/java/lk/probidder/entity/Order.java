@@ -29,5 +29,5 @@ public class Order {
     private Date orderDate;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private List<OrderHasItem> orderHasItems = new ArrayList<>();
 }

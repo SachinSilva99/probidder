@@ -1,6 +1,7 @@
 package lk.probidder.util.mapper;
 
 import lk.probidder.dto.AuctionItemDTO;
+import lk.probidder.dto.request.AuctionItemRequestDTO;
 import lk.probidder.dto.response.AuctionItemResponseDTO;
 import lk.probidder.entity.AuctionItem;
 import org.mapstruct.Mapper;
@@ -17,4 +18,5 @@ public interface AuctionItemMapper {
     AuctionItemResponseDTO toItemResponseDto(AuctionItem auctionItem);
 
     List<AuctionItemResponseDTO> toAuctionItemResponseDTOs(List<AuctionItem> auctionItems);
+    AuctionItemDTO auctionRequestDTOtoAuctionItemDto(AuctionItemRequestDTO auctionItemRequestDTO);
 }

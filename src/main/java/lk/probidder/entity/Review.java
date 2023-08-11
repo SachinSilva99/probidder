@@ -27,7 +27,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "buy_direct_item_id", referencedColumnName = "id")
-    private BuyDirectItem buyDirectItem;
+    private Item item;
 
     @ManyToOne
     @JoinColumn(name = "buyer_id", referencedColumnName = "id")

@@ -53,19 +53,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String createUser(UserRequestDTO urd) {
-        UserDTO userDTO = new UserDTO(
+      /*  UserDTO userDTO = new UserDTO(
                 urd.getUsername(),
                 urd.getEmail(),
                 urd.getPassword(),
                 urd.getPhoneNumber(),
                 urd.getRole(),
                 urd.getDob()
-        );
-        System.out.println("passowrd "+ urd.getPassword());
-        User user = userMapper.toUser(userDTO);
-
-        System.out.println(user);
-        return userRepository.save(user).getId()+ " saved";
+        );*/
+        UserDTO userDTO = userMapper.userRequestDtoToUserDto(urd);
+        return userRepository.save(userMapper.toUser(userDTO)).getId()+ " saved";
     }
 
     @Override

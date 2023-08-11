@@ -13,9 +13,9 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "order_items")
+@Table(name = "order_has_item")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class OrderItem {
+public class OrderHasItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

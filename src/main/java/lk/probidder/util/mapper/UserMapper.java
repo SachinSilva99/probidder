@@ -1,6 +1,7 @@
 package lk.probidder.util.mapper;
 
 import lk.probidder.dto.UserDTO;
+import lk.probidder.dto.request.UserRequestDTO;
 import lk.probidder.dto.response.UserResponseDTO;
 import lk.probidder.entity.User;
 import org.mapstruct.Mapper;
@@ -15,6 +16,8 @@ public interface UserMapper {
     User toUser(UserDTO userDTO);
 
     UserResponseDTO toUserResponseDto(User user);
+    UserDTO userRequestDtoToUserDto(UserRequestDTO userRequestDTO);
+
 
     List<UserResponseDTO> toUserResponseDtos(List<User> userList);
 }

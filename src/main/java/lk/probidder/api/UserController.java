@@ -39,8 +39,7 @@ public class UserController {
             produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
     public ResponseEntity<String> save(@RequestBody UserRequestDTO userRequestDTO) {
-        System.out.println(userRequestDTO);
-        String user = userService.createUser(userRequestDTO);
-        return ResponseEntity.ok(user);
+        String userId = userService.createUser(userRequestDTO);
+        return ResponseEntity.ok(userId);
     }
 }

@@ -12,10 +12,10 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 @Entity
-public class BuyDirectItemOrder extends OrderItem {
+public class ItemOrder extends OrderHasItem {
     @ManyToOne
-    @JoinColumn(name = "buy_direct_item_id")
-    private BuyDirectItem buyDirectItem;
+    @JoinColumn(name = "item_id")
+    private Item item;
     @Column
-    private long buyDirectItemQty;
+    private long itemQty;
 }

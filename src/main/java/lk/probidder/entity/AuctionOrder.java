@@ -15,7 +15,7 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 @Entity
-public class AuctionItemOrder extends OrderItem {
+public class AuctionOrder extends OrderHasItem {
     @ManyToOne
     @JoinColumn(name = "auction_item_id")
     private AuctionItem auctionItem;
