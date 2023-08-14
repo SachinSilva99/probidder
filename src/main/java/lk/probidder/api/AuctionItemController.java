@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 Author : Sachin Silva
 */
 @RestController
-@RequestMapping("/api/auction-item")
+@RequestMapping("/api/v1/auction-item")
 public class AuctionItemController {
     @Autowired
     private AuctionItemService service;

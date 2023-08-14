@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
                 urd.getEmail(),
                 urd.getPassword(),
                 urd.getPhoneNumber(),
-                urd.getRole(),
+                urd.getRoleType(),
                 urd.getDob()
         );*/
         UserDTO userDTO = userMapper.userRequestDtoToUserDto(urd);

@@ -1,7 +1,7 @@
 package lk.probidder.entity;
 
 import jakarta.persistence.*;
-import lk.probidder.entity.enums.Role;
+import lk.probidder.entity.enums.RoleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,8 +36,9 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(nullable = false)
-    private Role role;
+    @Column
+    @Enumerated
+    private List<RoleType> roleTypes;
 
     @Column(nullable = false)
     private LocalDate dob;

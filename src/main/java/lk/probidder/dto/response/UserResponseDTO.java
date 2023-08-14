@@ -1,7 +1,7 @@
 package lk.probidder.dto.response;
 
 import lk.probidder.dto.AuctionItemDTO;
-import lk.probidder.entity.enums.Role;
+import lk.probidder.entity.enums.RoleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,8 @@ public class UserResponseDTO {
     private String email;
     private String password;
     private String phoneNumber;
-    private Role role;
+    private List<RoleType> roleTypes;
+
     private LocalDate dob;
     private List<AuctionItemDTO> auctionItems = new ArrayList<>();
 /*    private List<BuyDirectItemDTO> buyDirectItems = new ArrayList<>();

@@ -16,7 +16,7 @@ Author : Sachin Silva
 */
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     @Autowired
@@ -38,12 +38,12 @@ public class UserController {
                     ), HttpStatus.CREATED
             );
         } catch (ClassNotFoundException e) {
-            //  e.printStackTrace();
+            e.printStackTrace();
         }
         return new ResponseEntity<>(
                 new StandardResponse(
                         404,
-                        id+" not found",
+                        id + " not found",
                         null
                 ), HttpStatus.NOT_FOUND
         );
