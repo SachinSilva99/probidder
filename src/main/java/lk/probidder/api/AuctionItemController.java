@@ -16,6 +16,7 @@ Author : Sachin Silva
 @RestController
 @RequestMapping("/api/v1/auction-item")
 public class AuctionItemController {
+
     @Autowired
     private AuctionItemService service;
 
