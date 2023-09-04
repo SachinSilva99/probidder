@@ -18,12 +18,7 @@ Author : Sachin Silva
 public class UserController {
 
     @Autowired
-    private final UserService userService;
-
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping("/{id}")
     public ResponseEntity<StandardResponse> getUser(@PathVariable Long id) {
@@ -45,11 +40,9 @@ public class UserController {
                         null
                 ), HttpStatus.NOT_FOUND
         );
-
     }
 
     @PostMapping(
-            value = "/create",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )

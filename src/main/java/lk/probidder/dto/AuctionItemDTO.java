@@ -27,7 +27,7 @@ public class AuctionItemDTO {
 
     private boolean active;
 
-    private Long seller;
+    private Long sellerId;
 
 
     public AuctionItemDTO(String description, double startingBid, double reservePrice, Date startTime, Date endTime, boolean active, Long sellerId) {
@@ -37,6 +37,6 @@ public class AuctionItemDTO {
         this.startTime = startTime;
         this.endTime = endTime;
         this.active = active;
-        this.seller = sellerId;
+        this.sellerId = sellerId;
     }
 }

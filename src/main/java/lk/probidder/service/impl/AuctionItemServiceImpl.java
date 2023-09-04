@@ -76,6 +76,4 @@ public class AuctionItemServiceImpl implements AuctionItemService {
         }
         byId.ifPresent(auctionItem -> auctionItemRepo.delete(auctionItem));
     }
-
-
 }
