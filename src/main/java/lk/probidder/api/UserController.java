@@ -1,8 +1,6 @@
 package lk.probidder.api;
 
-import jakarta.persistence.EntityNotFoundException;
-import lk.probidder.dto.request.UserRequestDTO;
-import lk.probidder.dto.response.UserResponseDTO;
+import lk.probidder.dto.UserDTO;
 import lk.probidder.service.UserService;
 import lk.probidder.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +53,8 @@ public class UserController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
-    public ResponseEntity<StandardResponse> save(@RequestBody UserRequestDTO userRequestDTO) {
-        String userIdSavedMsg = userService.createUser(userRequestDTO);
+    public ResponseEntity<StandardResponse> save(@RequestBody UserDTO userDTO) {
+        String userIdSavedMsg = userService.createUser(userDTO);
         return new ResponseEntity<>(
                 new StandardResponse(
                         204,

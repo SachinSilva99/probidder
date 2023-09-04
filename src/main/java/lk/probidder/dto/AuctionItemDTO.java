@@ -27,16 +27,10 @@ public class AuctionItemDTO {
 
     private boolean active;
 
-    private UserDTO seller;
+    private Long seller;
 
 
-//    private List<BidDTO> bids = new ArrayList<>();
-
-//    private List<ReviewDTO> reviews = new ArrayList<>();
-
-//    private List<AuctionItemOrderDTO> auctionItemOrders = new ArrayList<>();
-
-    public AuctionItemDTO(String description, double startingBid, double reservePrice, Date startTime, Date endTime, boolean active, UserDTO sellerId) {
+    public AuctionItemDTO(String description, double startingBid, double reservePrice, Date startTime, Date endTime, boolean active, Long sellerId) {
         this.description = description;
         this.startingBid = startingBid;
         this.reservePrice = reservePrice;

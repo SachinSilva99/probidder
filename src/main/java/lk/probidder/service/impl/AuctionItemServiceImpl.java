@@ -3,8 +3,6 @@ package lk.probidder.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lk.probidder.dto.AuctionItemDTO;
-import lk.probidder.dto.request.AuctionItemRequestDTO;
-import lk.probidder.dto.response.AuctionItemResponseDTO;
 import lk.probidder.entity.AuctionItem;
 import lk.probidder.repo.AuctionItemRepo;
 import lk.probidder.service.AuctionItemService;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /*
 Author : Sachin Silva
@@ -27,45 +26,44 @@ public class AuctionItemServiceImpl implements AuctionItemService {
     AuctionItemMapper auctionItemMapper;
 
     @Override
-    public AuctionItemResponseDTO getAuctionItemDto(Long id) throws ClassNotFoundException {
+    public AuctionItemDTO getAuctionItemDto(Long id) throws ClassNotFoundException {
         Optional<AuctionItem> byId = auctionItemRepo.findById(id);
         if (byId.isPresent()) {
-            return auctionItemMapper.toItemResponseDto(byId.get());
+            return auctionItemMapper.toAuctionItemDto(byId.get());
         }
         throw new ClassNotFoundException();
     }
 
     @Override
-    public List<AuctionItemResponseDTO> getAuctionItemsByActive(boolean active) {
+    public List<AuctionItemDTO> getAuctionItemsByActive(boolean active) {
         List<AuctionItem> auctionItems = auctionItemRepo.searchAuctionItemsByActive(active);
-        return auctionItemMapper.toAuctionItemResponseDTOs(auctionItems);
+        return auctionItems
+                .stream()
+                .map(auctionItem -> auctionItemMapper.toAuctionItemDto(auctionItem))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<AuctionItemResponseDTO> getItemDtoList() {
-        return auctionItemMapper.toAuctionItemResponseDTOs(auctionItemRepo.findAll());
-
+    public List<AuctionItemDTO> getItemDtoList() {
+        return auctionItemRepo
+                .findAll()
+                .stream()
+                .map(ai -> auctionItemMapper.toAuctionItemDto(ai))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<AuctionItemResponseDTO> searchItemDtoByDesOrId(String description, Long id) {
-        return auctionItemMapper.
-                toAuctionItemResponseDTOs(auctionItemRepo.searchAllByDescriptionContainsOrIdContains(description, id));
+    public List<AuctionItemDTO> searchItemDtoByDesOrId(String description, Long id) {
+        return auctionItemRepo
+                .searchAllByDescriptionContainsOrIdContains(description, id)
+                .stream()
+                .map(auctionItem -> auctionItemMapper.toAuctionItemDto(auctionItem))
+                .collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public String createAuctionItem(AuctionItemRequestDTO auctionItemRequestDTO) {
-      /*  AuctionItemDTO auctionItemDTO = new AuctionItemDTO(
-                dto.getDescription(),
-                dto.getStartingBid(),
-                dto.getReservePrice(),
-                dto.getStartTime(),
-                dto.getEndTime(),
-                dto.isActive(),
-                dto.getSeller()
-        );*/
-        AuctionItemDTO auctionItemDTO = auctionItemMapper.auctionRequestDTOtoAuctionItemDto(auctionItemRequestDTO);
+    public String createAuctionItem(AuctionItemDTO auctionItemDTO) {
         return auctionItemRepo
                 .save(auctionItemMapper.toAuctionItem(auctionItemDTO)).getId() + " saved";
     }
@@ -73,12 +71,11 @@ public class AuctionItemServiceImpl implements AuctionItemService {
     @Override
     public void deleteAuctionItem(Long id) {
         Optional<AuctionItem> byId = auctionItemRepo.findById(id);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             throw new EntityNotFoundException(id + " is not available");
         }
         byId.ifPresent(auctionItem -> auctionItemRepo.delete(auctionItem));
     }
-
 
 
 }

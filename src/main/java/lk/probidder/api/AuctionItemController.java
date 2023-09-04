@@ -1,7 +1,6 @@
 package lk.probidder.api;
 
-import jakarta.persistence.EntityNotFoundException;
-import lk.probidder.dto.request.AuctionItemRequestDTO;
+import lk.probidder.dto.AuctionItemDTO;
 import lk.probidder.service.AuctionItemService;
 import lk.probidder.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +20,10 @@ public class AuctionItemController {
     private AuctionItemService service;
 
     @PostMapping(
-            value = "/create",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
-    public ResponseEntity<StandardResponse> save(@RequestBody AuctionItemRequestDTO dto) {
+    public ResponseEntity<StandardResponse> save(@RequestBody AuctionItemDTO dto) {
         System.out.println(dto);
         String auctionItemId = service.createAuctionItem(dto);
         return new ResponseEntity<>(
@@ -37,7 +35,7 @@ public class AuctionItemController {
         );
     }
 
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<StandardResponse> delete(@PathVariable Long id) {
         try {
             service.deleteAuctionItem(id);

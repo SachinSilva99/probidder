@@ -1,8 +1,6 @@
 package lk.probidder.service;
 
-import jakarta.persistence.EntityNotFoundException;
-import lk.probidder.dto.request.AuctionItemRequestDTO;
-import lk.probidder.dto.response.AuctionItemResponseDTO;
+import lk.probidder.dto.AuctionItemDTO;
 
 import java.util.List;
 
@@ -10,12 +8,12 @@ import java.util.List;
 Author : Sachin Silva
 */
 public interface AuctionItemService {
-    AuctionItemResponseDTO getAuctionItemDto(Long id) throws ClassNotFoundException;
+    AuctionItemDTO getAuctionItemDto(Long id) throws ClassNotFoundException;
 
-    List<AuctionItemResponseDTO> getAuctionItemsByActive(boolean active);
-    List<AuctionItemResponseDTO>getItemDtoList();
-    List<AuctionItemResponseDTO>searchItemDtoByDesOrId(String description, Long id);
-    String createAuctionItem(AuctionItemRequestDTO auctionItemRequestDTO);
+    List<AuctionItemDTO> getAuctionItemsByActive(boolean active);
+    List<AuctionItemDTO>getItemDtoList();
+    List<AuctionItemDTO>searchItemDtoByDesOrId(String description, Long id);
+    String createAuctionItem(AuctionItemDTO auctionItemRequestDTO);
     void deleteAuctionItem(Long id)throws ClassNotFoundException;
 
 }

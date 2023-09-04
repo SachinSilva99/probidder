@@ -24,9 +24,4 @@ public class UserDTO {
     private String phoneNumber;
     private List<RoleType> roleTypes;
     private LocalDate dob;
-    private List<AuctionItemDTO> auctionItems = new ArrayList<>();
-   /* private List<BuyDirectItemDTO> buyDirectItems = new ArrayList<>();
-    private List<NotificationDTO> notifications = new ArrayList<>();
-    private List<ReviewDTO> reviews = new ArrayList<>();*/
-
 }
