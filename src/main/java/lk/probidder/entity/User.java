@@ -43,13 +43,13 @@ public class User {
     @Column(nullable = false)
     private LocalDate dob;
 
-    @OneToMany
+    @OneToMany(mappedBy = "seller")
     private List<AuctionItem> auctionItems = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "seller")
     private List<Item> items = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "recipient")
     private List<Notification> notifications = new ArrayList<>();
 
     @OneToMany(mappedBy = "buyer")

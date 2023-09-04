@@ -23,6 +23,7 @@ public class Order {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "buyer_id", referencedColumnName = "id",nullable = false)
     private User buyer;
 
     @Column(nullable = false, name = "order_date")

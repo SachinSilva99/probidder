@@ -20,7 +20,6 @@ public class AuctionOrder extends OrderHasItem {
     @JoinColumn(name = "auction_item_id")
     private AuctionItem auctionItem;
 
-
     @Column
     private long auctionItemQty;
 }

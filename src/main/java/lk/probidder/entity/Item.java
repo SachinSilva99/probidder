@@ -38,7 +38,7 @@ public class Item {
     @JoinColumn(name = "seller_id", referencedColumnName = "id")
     private User seller;
 
-    @OneToMany
+    @OneToMany(mappedBy = "item")
     private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "item")
