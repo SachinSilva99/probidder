@@ -20,6 +20,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    @PostMapping(
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
+    )
+    public ResponseEntity<StandardResponse> create(@RequestBody UserDTO userDTO) {
+
+        String userIdSavedMsg = userService.createUser(userDTO);
+        return new ResponseEntity<>(
+                new StandardResponse(
+                        204,
+                        userIdSavedMsg,
+                        null
+                ), HttpStatus.CREATED
+        );
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<StandardResponse> getUser(@PathVariable Long id) {
         try {
@@ -42,18 +59,5 @@ public class UserController {
         );
     }
 
-    @PostMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
-    )
-    public ResponseEntity<StandardResponse> save(@RequestBody UserDTO userDTO) {
-        String userIdSavedMsg = userService.createUser(userDTO);
-        return new ResponseEntity<>(
-                new StandardResponse(
-                        204,
-                        userIdSavedMsg,
-                        null
-                ), HttpStatus.CREATED
-        );
-    }
+
 }

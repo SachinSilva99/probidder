@@ -13,6 +13,7 @@ Author : Sachin Silva
 @NoArgsConstructor
 @Data
 public class AuctionItemDTO {
+
     private Long id;
 
     private String description;
